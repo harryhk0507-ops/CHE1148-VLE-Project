@@ -1,0 +1,47 @@
+# -------------------------
+# Python cache + artifacts
+# -------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Byte-compiled / optimized / DLL files
+*.so
+*.dylib
+
+# -------------------------
+# Jupyter Notebook
+# -------------------------
+.ipynb_checkpoints/
+
+# -------------------------
+# Conda environment files
+# (environment.yml SHOULD be committed)
+# -------------------------
+# Ignore conda-build artifacts
+conda-bld/
+
+# -------------------------
+# Virtual environments (if someone uses venv)
+# -------------------------
+.venv/
+venv/
+
+# -------------------------
+# IDE / Editor junk
+# -------------------------
+.vscode/
+.idea/
+
+# -------------------------
+# OS-specific junk
+# -------------------------
+.DS_Store
+Thumbs.db
+
+# -------------------------
+# Environment variables
+# -------------------------
+.env
+*.env
