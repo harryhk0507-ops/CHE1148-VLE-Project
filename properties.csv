@@ -1,0 +1,98 @@
+sPropName
+(Relative) activity
+"2nd virial coefficient, m3/mol"
+"3rd virial coefficient, m6/mol2"
+Activity coefficient
+"Amount concentration (molarity), mol/dm3"
+"Amount density, mol/m3"
+Amount ratio of solute to solvent
+"Apparent molar enthalpy, kJ/mol"
+"Apparent molar heat capacity, J/K/mol"
+"Apparent molar volume, m3/mol"
+Azeotropic composition: mole fraction
+"Azeotropic pressure, kPa"
+"Azeotropic temperature, K"
+"Binary diffusion coefficient, m2/s"
+"Boiling temperature at pressure P, K"
+Compressibility factor
+"Critical density, kg/m3"
+"Critical molar volume, m3/mol"
+"Critical pressure, kPa"
+"Critical temperature, K"
+"Electrical conductivity, S/m"
+Eutectic composition: mass fraction
+Eutectic composition: mole fraction
+"Eutectic temperature, K"
+"Excess molar Gibbs energy, kJ/mol"
+"Excess molar enthalpy (molar enthalpy of mixing), kJ/mol"
+"Excess molar heat capacity, J/K/mol"
+"Excess molar volume, m3/mol"
+Fugacity coefficient
+"Heat capacity at constant pressure per volume, J/K/m3"
+"Henry's Law constant (amount concentration scale), kPa*dm3/mol"
+"Henry's Law constant (molality scale), kPa*kg/mol"
+"Henry's Law constant (mole fraction scale), kPa"
+"Interfacial tension, N/m"
+"Isobaric coefficient of expansion, 1/K"
+"Isothermal compressibility, 1/kPa"
+"Joule-Thomson coefficient, K/kPa"
+"Kinematic viscosity, m2/s"
+"Liquid-liquid equilibrium temperature, K"
+Lower consolute composition: mass fraction
+Lower consolute composition: mole fraction
+"Lower consolute pressure, kPa"
+"Lower consolute temperature, K"
+"Mass concentration, kg/m3"
+"Mass density, kg/m3"
+Mass fraction
+Mass ratio of solute to solvent
+Mean ionic activity coefficient
+"Molality, mol/kg"
+"Molar conductivity, S*m2/mol"
+"Molar enthalpy function {Hm(T)-Hm(0)}/T, J/K/mol"
+"Molar enthalpy of dilution, kJ/mol"
+"Molar enthalpy of mixing with solvent, kJ/mol"
+"Molar enthalpy of solution, kJ/mol"
+"Molar enthalpy of transition or fusion, kJ/mol"
+"Molar enthalpy of vaporization or sublimation, kJ/mol"
+"Molar enthalpy, kJ/mol"
+"Molar entropy, J/K/mol"
+"Molar heat capacity at constant pressure, J/K/mol"
+"Molar heat capacity at constant volume, J/K/mol"
+"Molar heat capacity at saturation pressure, J/K/mol"
+"Molar volume, m3/mol"
+Mole fraction
+Mole fraction in LLG critical state
+Monotectic composition: mole fraction
+"Monotectic temperature, K"
+"Normal boiling temperature, K"
+"Normal melting temperature, K"
+Osmotic coefficient
+Ostwald coefficient
+"Partial molar enthalpy, kJ/mol"
+"Partial molar volume, m3/mol"
+"Partial pressure, kPa"
+"Peritectic temperature, K"
+"Quadruple (quintuple) point temperature, K"
+"Ratio of amount of solute to mass of solution, mol/kg"
+Refractive index (Na D-line)
+Refractive index (other wavelength)
+Relative permittivity at various frequencies
+Relative permittivity at zero frequency
+"Self diffusion coefficient, m2/s"
+"Solid-liquid equilibrium temperature, K"
+"Specific heat capacity at constant pressure, J/K/kg"
+"Specific volume, m3/kg"
+"Speed of sound, m/s"
+"Surface tension liquid-gas, N/m"
+"Thermal conductivity, W/m/K"
+"Thermal diffusivity, m2/s"
+"Thermal pressure coefficient, kPa/K"
+"Tracer diffusion coefficient, m2/s"
+"Triple point temperature, K"
+Upper consolute composition: mole fraction
+"Upper consolute pressure, kPa"
+"Upper consolute temperature, K"
+"Vapor or sublimation pressure, kPa"
+"Viscosity, Pa*s"
+Volume fraction
