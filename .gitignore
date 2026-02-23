@@ -53,3 +53,6 @@ Cleaned_VLE_Data_with_Smiles_and_Mols.csv
 Cleaned_VLE_Data_with_Smiles_and_Mols_and_Descriptors.csv
 descriptors_for_comp_1.npy
 descriptors_for_comp_2.npy
+test_df.csv
+train_df.csv
+val_df.csv
