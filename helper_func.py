@@ -40,3 +40,4 @@ def one_hot_encode(df, drop_first=False, dummy_na=False, prefix_sep="_"):
         cat_map[c] = mapping
 
     return out, cat_map
+
