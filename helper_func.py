@@ -135,3 +135,42 @@ def get_smiles(df: pd.DataFrame,
     df['mol2'] = df['Smiles 2'].apply(Chem.MolFromSmiles)
 
     return df
+
+def eval_nn(data_loader,
+            model,
+            device) -> tuple:
+    """Evaluate a neural network model on a given dataset.
+     :param data_loader: DataLoader providing the evaluation dataset.
+     :param model: The neural network model to evaluate.
+     :param device: The device (CPU or GPU) to perform evaluation on.
+     :return: MSE and R2 (prints the Mean Squared Error and R^2 Score)."""
+
+    import torch
+    from sklearn.metrics import mean_squared_error, r2_score
+
+    model.eval()
+    all_preds = []
+    all_targets = []
+
+    with torch.no_grad():
+        for inputs, targets in data_loader:
+            inputs, targets = inputs.to(device), targets.to(device)
+            outputs = model(inputs)
+            all_preds.append(outputs.cpu().numpy())
+            all_targets.append(targets.cpu().numpy())
+
+    all_preds = np.concatenate(all_preds)
+    all_targets = np.concatenate(all_targets)
+
+    mse = mean_squared_error(all_targets, all_preds)
+    r2 = r2_score(all_targets, all_preds)
+
+    print(f"Mean Squared Error: {mse:.4f}")
+    print(f"R^2 Score: {r2:.4f}")
+
+    return (mse, r2)
+
+def train_nn(train_loader,
+             val_loader,
+             ):
+    """Train a neural network model on the provided training data and evaluate on validation data."""
