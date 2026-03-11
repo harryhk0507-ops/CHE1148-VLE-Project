@@ -169,8 +169,3 @@ def eval_nn(data_loader,
     print(f"R^2 Score: {r2:.4f}")
 
     return (mse, r2)
-
-def train_nn(train_loader,
-             val_loader,
-             ):
-    """Train a neural network model on the provided training data and evaluate on validation data."""
