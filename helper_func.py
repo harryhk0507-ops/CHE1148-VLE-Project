@@ -1,15 +1,7 @@
 import numpy as np
 import pandas as pd
-import os
-import time
-from functools import lru_cache
-from tqdm.auto import tqdm
-import pubchempy as pcp
-from rdkit import Chem
-from descriptastorus.descriptors import rdNormalizedDescriptors
-import torch
-from sklearn.metrics import mean_squared_error, r2_score
 
+#%%
 def one_hot_encode(df,
                    drop_first: bool = False,
                    dummy_na: bool = False,
@@ -68,20 +60,25 @@ def get_descriptors(data_set:pd.DataFrame,
                     output_df: bool = True, # Whether to return the updated DataFrame with descriptors
                     )->pd.DataFrame | None:
     """Helper function to calculate and save molecular descriptors for specified columns in a DataFrame."""
+    from functools import lru_cache
+    from descriptastorus.descriptors import rdNormalizedDescriptors
+    from tqdm.auto import tqdm
+    import os
+
     @lru_cache(maxsize=None)
     def get_cached_descriptors(mol_input): return generator.calculateMol(mol_input, None)
     generator = rdNormalizedDescriptors.RDKit2DNormalized()
 
     if save_file: os.makedirs(save_dir, exist_ok=True)
 
+    # Create a copy of the dataset to avoid modifying the original
     df = data_set.copy()
     for col in mol_col:
         print(f"Processing {col}...")
-        x = np.stack([get_cached_descriptors(m) for m in tqdm(df[col].tolist())])
+        x = np.stack([get_cached_descriptors(m) for m in tqdm.tqdm(df[col].tolist())])
         print(f"{col} shape: {x.shape}")
         if save_file: np.save(f'{save_dir}/descriptors_for_{col}.npy', x)
-        desc_df = pd.DataFrame(x, index=df.index, columns=[f"{col}_desc_{i}" for i in range(x.shape[1])])
-        df = pd.concat([df, desc_df], axis=1)
+        df = pd.concat([df, pd.DataFrame(x, columns=[f"{col}_desc_{i}" for i in range(x.shape[1])])], axis=1)
 
     # Save the updated DataFrame with descriptors
     if save_file: df.to_csv(f'{save_dir}/dataset_with_descriptors.csv', index=False)
@@ -94,6 +91,11 @@ def get_smiles(df: pd.DataFrame,
     :param df: Input DataFrame containing 'Component 1' and 'Component 2' columns.
     :param print_errors: Whether to print error messages during fetching.
     :return: DataFrame with added 'Smiles 1' and 'Smiles' columns containing the SMILES strings for the respective components."""
+
+    import time
+    from functools import lru_cache
+    import pubchempy as pcp
+    from rdkit import Chem
 
     @lru_cache(maxsize=None)
     def obtain_smile(name, retries=3, print_errors=print_errors):
@@ -131,9 +133,6 @@ def get_smiles(df: pd.DataFrame,
 
     df['mol1'] = df['Smiles 1'].apply(Chem.MolFromSmiles)
     df['mol2'] = df['Smiles 2'].apply(Chem.MolFromSmiles)
-    
-    # Drop rows where RDKit failed to parse the SMILES
-    df = df.dropna(subset=['mol1', 'mol2'])
 
     return df
 
@@ -145,6 +144,9 @@ def eval_nn(data_loader,
      :param model: The neural network model to evaluate.
      :param device: The device (CPU or GPU) to perform evaluation on.
      :return: MSE and R2 (prints the Mean Squared Error and R^2 Score)."""
+
+    import torch
+    from sklearn.metrics import mean_squared_error, r2_score
 
     model.eval()
     all_preds = []
