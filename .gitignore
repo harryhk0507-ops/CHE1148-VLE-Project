@@ -63,3 +63,5 @@ y_test.csv
 y_train.csv
 y_val.csv
 processed_data/dataset_with_descriptors.csv
+/nn_output/checkpoints
+nn_output/checkpoints/val_losses.npy
