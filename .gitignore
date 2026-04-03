@@ -65,3 +65,7 @@ y_val.csv
 processed_data/dataset_with_descriptors.csv
 /nn_output/checkpoints
 nn_output/checkpoints/val_losses.npy
+nn_output/checkpoints/Baseline_nn
+nn_output/checkpoints/bestBaseline_nn.pt
+nn_output/checkpoints/train_losses.npy
+nn_output/checkpoints/val_losses.npy
