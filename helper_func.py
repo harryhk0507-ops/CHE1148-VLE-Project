@@ -98,12 +98,12 @@ def get_smiles(df: pd.DataFrame,
     from rdkit import Chem
 
     @lru_cache(maxsize=None)
-    def obtain_smile(name, retries=3, print_errors=print_errors):
+    def obtain_smile(name, retries=5, print_errors=print_errors):
         for i in range(retries):
             try:
                 compounds = pcp.get_compounds(name, 'name')
                 if compounds:
-                    return compounds[0].isomeric_smiles
+                    return compounds[0].smiles
                 return None
             except Exception as e:
                 if "SSL" in str(e) or "EOF" in str(e):
