@@ -69,3 +69,9 @@ nn_output/checkpoints/Baseline_nn
 nn_output/checkpoints/bestBaseline_nn.pt
 nn_output/checkpoints/train_losses.npy
 nn_output/checkpoints/val_losses.npy
+E1_test.npy
+E1_train.npy
+E1_val.npy
+E2_test.npy
+E2_train.npy
+E2_val.npy
