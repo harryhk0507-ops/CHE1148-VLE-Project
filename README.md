@@ -2,6 +2,7 @@ Predicting Mole Fraction in Binary Vapor–Liquid Systems
 
 **Harry Chin, Chenhe Zhang, Kuangdi Zhu**  
 Target Workshop: Machine Learning and the Physical Sciences
+
 University of Toronto — CHE1148 Artificial Intelligence for Applied Chemistry and Chemical Engineering
 
 ---
