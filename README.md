@@ -1,6 +1,7 @@
 # Predicting Mole Fraction in Binary Vapor–Liquid Systems
 
-**Harry Chin, Chenhe Zhang, Kuangdi Zhu**  
+**Harry Chin, Chenhe Zhang, Kuangdi Zhu** 
+Team Name: Binary VLE Fighters
 Target Workshop: Machine Learning and the Physical Sciences  
 CHE1148
 
@@ -8,7 +9,7 @@ CHE1148
 
 ## Overview
 
-This project develops a data-driven pipeline for predicting the **mole fraction of binary vapor–liquid mixtures** from thermodynamic conditions, molecular descriptors, and at least one measured thermophysical property. Data is sourced from the NIST ThermoML Archive and ThermoData Engine (TDE).
+In this project, different machine learning models were developed for predicting the **mole fraction of binary vapor–liquid mixtures** from thermodynamic conditions, molecular descriptors, and at least one measured thermophysical property. Data is sourced from the NIST ThermoML Archive and ThermoData Engine (TDE).
 
 The task is formulated as an inverse mapping problem: given temperature, pressure, phase, component identities, and one additional measured property, predict the mole fraction of the first listed component.
 
@@ -18,7 +19,7 @@ Four models are implemented and evaluated:
 - Simple MLP
 - Mixture-aware multimodal neural network (SMOLE-BERT + RDKit descriptors)
 
-The multimodal model achieves the best performance (R² = 0.8175, MAE = 0.0696), outperforming both tabular baselines.
+The multimodal model achieves the best performance (R² = 0.8175, MAE = 0.0696, MSE = 0.0174), outperforming the other baselines.
 
 ---
 
@@ -33,9 +34,9 @@ CHE1148-VLE-Project/
 │
 ├── data/
 │   └── raw/
-│       └── data.parquet              # Processed modeling dataset (106,383 rows)
-│                                     # Full raw TDE data not tracked due to size.
-│                                     # Run notebooks 01–05 to regenerate from scratch.
+│       └── data.parquet              # Unprocessed dataset (2,643,425 rows, 70 columns)
+│                                     # Intermediate and Processed Data not attached here due to size
+│                                     # Run notebooks 01–05 to regenerate Processed Dataset
 │
 ├── models/                           # Saved model weights and hyperparameters
 │   ├── linear_baseline.pkl
@@ -56,7 +57,7 @@ CHE1148-VLE-Project/
 │   └── 10_multi_modal.ipynb
 │
 └── report/
-    ├── data for plotting figures/    # Training loss history CSVs
+    ├── data for plotting figures/    # Training loss history CSVs for the baseline and multimodal MLP models
     │   ├── training_loss_history_baseline.csv
     │   └── training_loss_history_multimodal.csv
     └── figures/                      # Figures used in the final report
@@ -69,11 +70,11 @@ CHE1148-VLE-Project/
 
 ## Setup
 
-This project was developed and run on **Google Colab** (GPU). To reproduce locally:
+To reproduce this project locally:
 
 ```bash
 conda env create -f environment.yml
-conda activate <env_name>
+conda activate CHE1148
 ```
 
 > Note: Some notebooks (especially SMOLE-BERT precomputation in `09` and multimodal training in `10`) are computationally intensive and are best run on a GPU runtime.
@@ -87,10 +88,11 @@ Run notebooks in numbered order:
 | Step | Notebook | Description |
 |------|----------|-------------|
 | 1–2 | `01–02_Data_processing` | Filter raw TDE data, quality control, sparsity reduction |
-| 3–4 | `03–04_Add_Rdkit/Descriptastorus` | Compute molecular descriptors from SMILES strings |
+| 3 | `03_Add_Rdkit_Smiles_Mols` | Obtain SMILES strings from PubChemPy, Mol objects from RDKit|
+| 4 | `04_Add_Descriptastorus` | Compute molecular descriptors from SMILES strings |
 | 5 | `05_dataset_splitting` | Stratified train/val/test split (80/10/10) by mixture rarity |
 | 6 | `06_Linear_baseline` | Train and evaluate simple linear regression baseline |
-| 7 | `07_XGBoost` | Train and evaluate XGBoost with Optuna hyperparameter tuning |
+| 7 | `07_XGBoost` | Train and evaluate XGBoost |
 | 8 | `08_NN_baseline` | Train and evaluate simple MLP baseline |
 | 9 | `09_Precompute_SMOLE_BERT` | Precompute SMOLE-BERT embeddings for mixture components |
 | 10 | `10_multi_modal` | Train and evaluate full multimodal model |
@@ -116,7 +118,7 @@ Raw data is sourced from:
 - [NIST ThermoML Archive](https://trc.nist.gov/ThermoML/)
 - [NIST ThermoData Engine (TDE)](https://www.nist.gov/srd/nist-standard-reference-database-103b)
 
-The initial unified dataset contained **2,643,425 rows and 70 columns**. After filtering and preprocessing, the cleaned modeling dataset contains **106,383 rows and 412 features**. The full raw TDE data is not tracked in this repository due to file size constraints.
+The initial unified dataset contained **2,643,425 rows and 70 columns**. After filtering and preprocessing, the cleaned dataset contains **106,383 rows and 412 features**. CSV files containing interim and processed data are not tracked in this repository due to file size constraints.
 
 ---
 
