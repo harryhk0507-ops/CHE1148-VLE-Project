@@ -118,7 +118,7 @@ Raw data is sourced from:
 - [NIST ThermoML Archive](https://trc.nist.gov/ThermoML/)
 - [NIST ThermoData Engine (TDE)](https://www.nist.gov/srd/nist-standard-reference-database-103b)
 
-The initial unified dataset contained **2,643,425 rows and 70 columns**. After filtering and preprocessing, the cleaned dataset contains **106,383 rows and 412 features**. CSV files containing interim and processed data are not tracked in this repository due to file size constraints.
+The initial unified dataset contained **2,643,425 rows and 70 columns**. After filtering and preprocessing, the cleaned dataset contains **106,383 rows and 412 features** (437 features after one-hot encoding). CSV files containing interim and processed data are not tracked in this repository due to file size constraints.
 
 ---
 
